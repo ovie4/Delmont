@@ -34,8 +34,10 @@ $(document).ready(function(){
         console.log(creds);
         $.post("/login", creds)
             .done(function(data){
-                console.log(data);
+                //console.log(data);
                 alert ("Logged In");
+                //send to tenants page
+                //$.get("/tenants");
             });
     });
 
@@ -53,8 +55,8 @@ $(document).ready(function(){
         console.log(info);
         $.post("/signup", info)
             .done(function(data){
-                console.log(data);
-                //log in and send to home page
+                //console.log(data);
+                //log in and send to tenants page
             });
     });
 

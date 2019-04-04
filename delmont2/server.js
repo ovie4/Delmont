@@ -7,7 +7,7 @@ var mongoose = require("mongoose");
 var PORT=1865;
 
 var db = require("./models");
-//set up server to handle api calls
+
 
 var app = express();
 
@@ -20,17 +20,14 @@ app.use(express.static("public"));
 //set up mongoose
 mongoose.Promise = Promise;
 mongoose.connect('mongodb://localhost/delmont', {useNewUrlParser: true});
+mongoose.set('useCreateIndex', true);
 
 
 //POST for new users on signup
 
-//GET for users on login
 
-app.get("/login", function(req,res){
-  //verify creds
-  //serve up tenants page
-
-})
+require("./controller/apiRoutes")(app);
+require("./controller/htmlRoutes")(app);
 
 //UPDATE user info
 
