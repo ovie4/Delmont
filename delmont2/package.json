@@ -1,0 +1,13 @@
+{
+  "name": "delmont",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Ovie Omene",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.20",
+    "morgan": "^1.9.1"
+  }
+}
