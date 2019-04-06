@@ -9,15 +9,18 @@ $(document).ready(function(){
     //new order submit POST request
     $("#newOrderSubmit").on("click", function(e){
         e.preventDefault();
-        //console.log(e);
+        //get username and add to order object
+        let user = $("#inputUsername").val().trim()
         let newOrder={
             aptNum: $("#inputAptNum").val(),
             category: $("input[name='categoryRadios']:checked").val(),
             problemDesc: $("#inputProblem").val().trim()
         };
         console.log(newOrder);
+        let url = "/api/newOrder/"+user;
+        console.log(url);
 
-        $.post("/api/newOrder", newOrder)
+        $.post(url, newOrder)
             .done(function(data){
                 console.log(data);
                 alert("New order Submitted!");

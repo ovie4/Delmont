@@ -49,7 +49,7 @@ $(document).ready(function(){
             lastName:$("#inputlName").val().trim(),
             aptNum:$("#inputAptNum").val(),
             username:$("#signupUsername").val().trim(),
-            pword:$("#signupPassword").val()
+            password:$("#signupPassword").val()
         };
         
         console.log(info);
