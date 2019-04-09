@@ -28,7 +28,7 @@ $(document).ready(function(){
         e.preventDefault();
         let creds={
             username:$("#inputUsername").val().trim(),
-            pword:$("#inputPassword").val()
+            password:$("#inputPassword").val()
         };
         
         console.log(creds);

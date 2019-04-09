@@ -1,5 +1,12 @@
 $(document).ready(function(){
     //create Open Order table
+    let username=window.location.pathname;
+    let url = "/api/orders"+username;
+    console.log(url, username);
+    // $.get(url)
+    //     .done(function(data){
+    //         console.log(data);
+    //     });
 
     //new order button pulls up form
     $("#newOrderButton").on("click", function(e){
