@@ -1,8 +1,9 @@
-let path = require("path");
-let User = require("../models/User");
-let Orders= require("../models/Orders");
-var passport = require('passport')
-  , LocalStrategy = require('passport-local').Strategy;
+const path = require("path");
+const User = require("../models/User");
+const Orders= require("../models/Orders");
+const flash = require("connect-flash"); 
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
 
 module.exports=function(app){
     app.post("/signup", function(req,res){
@@ -24,30 +25,45 @@ module.exports=function(app){
     });
 
     //login route
-    passport.use(new LocalStrategy(
-        function(username, password, done) {
-            User.findOne({ username: username }, function(err, user) {
-                if (err) { return done(err); }
-                if (!user) {
-                return done(null, false, { message: 'Incorrect username.' });
+    // passport.use('local', new LocalStrategy({
+    //     usernameField: "username",
+    //     passwordField: "password",
+    //     // passReqToCallback: true
+    // },
+    //     function(username, password, done) {
+    //         User.findOne({ username: username }, function(err, user) {
+    //             if (err) { return done(err); }
+    //             if (!user) {
+    //             return done(null, false, { message: 'Incorrect username.' });
+    //             }
+    //             if (!user.password!=password) {
+    //             return done(null, false, { message: 'Incorrect password.' });
+    //             }
+    //             console.log("found");
+    //             //res.json(user);
+    //             return done(null, user);
+                
+                
+    //         });
+    //     }
+    // ));
+    app.post('/login', function(req,res){
+        User.findOne({username:req.body.username})
+            .then(function(dbUser){
+                console.log(req.body);
+                if(dbUser.password===req.body.password){
+                    let url="/tenants/"+dbUser.username;
+                   // console.log(url);
+                    res.json(url);
                 }
-                if (!user.password!=password) {
-                return done(null, false, { message: 'Incorrect password.' });
+                else{
+                    console.log("login error");
                 }
-                // return done(null, user);
-                console.log("found");
-                res.json(user);
             });
-        }
-    ));
-    app.post('/login', 
-            passport.authenticate('local', { successRedirect: '/success',
-                                            failureRedirect: '/loginError',
-                                            failureFlash: true }),
-            function(req,res){
-                res.send("it worked");
-            }
-);
+    });
+
+    // app.post('/login',passport.authenticate('local', {successRedirect:"../public/tenants.html", failureRedirect:"../public/index.html",failureFlash:true})
+    // );
 
     //add new order route
     app.post("/api/newOrder/:username", function(req,res){

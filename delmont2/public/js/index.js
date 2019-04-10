@@ -30,14 +30,10 @@ $(document).ready(function(){
             username:$("#inputUsername").val().trim(),
             password:$("#inputPassword").val()
         };
-        
-        console.log(creds);
         $.post("/login", creds)
             .done(function(data){
-                //console.log(data);
-                alert ("Logged In");
-                //send to tenants page
-                //$.get("/tenants");
+                // console.log(data);
+                window.location.href=data;
             });
     });
 
@@ -48,7 +44,7 @@ $(document).ready(function(){
             firstName:$("#inputfName").val().trim(),
             lastName:$("#inputlName").val().trim(),
             aptNum:$("#inputAptNum").val(),
-            username:$("#signupUsername").val().trim(),
+            username:$("#signupUsername").val().trim().toLowerCase(),
             password:$("#signupPassword").val()
         };
         
