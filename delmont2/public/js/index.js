@@ -28,16 +28,12 @@ $(document).ready(function(){
         e.preventDefault();
         let creds={
             username:$("#inputUsername").val().trim(),
-            pword:$("#inputPassword").val()
+            password:$("#inputPassword").val()
         };
-        
-        console.log(creds);
         $.post("/login", creds)
             .done(function(data){
-                //console.log(data);
-                alert ("Logged In");
-                //send to tenants page
-                //$.get("/tenants");
+                // console.log(data);
+                window.location.href=data;
             });
     });
 
@@ -48,8 +44,8 @@ $(document).ready(function(){
             firstName:$("#inputfName").val().trim(),
             lastName:$("#inputlName").val().trim(),
             aptNum:$("#inputAptNum").val(),
-            username:$("#signupUsername").val().trim(),
-            pword:$("#signupPassword").val()
+            username:$("#signupUsername").val().trim().toLowerCase(),
+            password:$("#signupPassword").val()
         };
         
         console.log(info);
@@ -57,6 +53,7 @@ $(document).ready(function(){
             .done(function(data){
                 //console.log(data);
                 //log in and send to tenants page
+                window.location.href=data;
             });
     });
 

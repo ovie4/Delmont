@@ -3,18 +3,10 @@ var mongoose = require("mongoose");
 var Schema=mongoose.Schema;
 
 let OrdersSchema= new Schema({
-    orderNum:{
-        type: Number,
-        unique:true,
-        required:true
-    },
+    
     aptNum:{
         type: Number,
         required: true
-    },
-    user:{
-        type:Schema.Types.ObjectId,
-        ref:"User"
     },
     category:{
         type: String,
@@ -24,11 +16,13 @@ let OrdersSchema= new Schema({
         type: Date,
         default:Date.now
     },
-    completed:{
-        type: String
+    dateCompleted:{
+        type: Date,
     },
-
-    notes:{
+    problemDesc:{
+        type:String
+    },
+    techNotes:{
         type: String
     }
 });
