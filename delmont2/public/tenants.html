@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Weclome Home</title>
+    <title>Welcome Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="../css/tenants.css">
@@ -42,7 +42,7 @@
         <div class="row">
             <h3>Welcome Back <span id="username"></span></h3>
         </div>
-        <!--row 2 col8 col4 open orders and new order-->
+        <!--row 2 col7 col5 open orders and new order-->
         <div class="row">
             <div class="col-md-7 openOrders">
                 <h3>Past Orders</h3>
@@ -59,40 +59,10 @@
             <div class="col-md-5 newOrder">
                 <button id="newOrderButton">Open New Order</button>
                 <form class="d-none" id="newOrderForm" action="/submitNewOrder">
-                    <div class="form-row">
-                        <div class="col">
-                            <input type="text" class="form-control" id="inputUsername" placeholder="username">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="aptNum" class="col-sm-3 col-form-label">Apt #</label>
-                        <div class="col-sm-10">
-                            <select class="form-control" id="inputAptNum">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                                <option>6</option>
-                                <option>7</option>
-                                <option>8</option>
-                                <option>9</option>
-                                <option>10</option>
-                                <option>11</option>
-                                <option>12</option>
-                                <option>13</option>
-                                <option>14</option>
-                                <option>15</option>
-                                <option>16</option>
-                                <option>Laundry</option>
-                            </select>
-                        </div>
-                    </div>
-                    
                     <fieldset class="form-group">
                         <div class="row">
-                        <legend class="col-form-label col-sm-2">Category</legend>
-                        <div class="col-sm-10">
+                        <legend class="col-form-label col-sm-4">Category</legend>
+                        <div class="col-sm-8">
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="categoryRadios" id="inputAppliance" value="Appliance">
                                 <label class="form-check-label" for="inputAppliance">
@@ -108,13 +78,13 @@
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="categoryRadios" id="inputGeneral" value="General">
                                 <label class="form-check-label" for="inputGeneral">
-                                    General Maintenance (miscellaneous)
+                                    General Maintenance
                                 </label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="categoryRadios" id="inputHVAC" value="HVAC">
                                 <label class="form-check-label" for="inputHVAC">
-                                    HVAC(Heating and Air)
+                                    Heating and Air
                                 </label>
                             </div>
                             <div class="form-check">

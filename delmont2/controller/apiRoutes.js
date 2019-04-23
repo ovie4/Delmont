@@ -16,8 +16,8 @@ module.exports=function(app){
                 console.log("connected");
                 console.log(dbUser);
                 //res.sendFile that user's new tenants page
-                let url="../public/tenants.html"+req.body.username;
-                res.sendFile(path.join(__dirname, url));
+                let url="/tenants/"+req.body.username;
+                res.json(url);
             })
             .catch(function(err){
                 console.log(err.message);
@@ -54,6 +54,7 @@ module.exports=function(app){
                 if(dbUser.password===req.body.password){
                     let url="/tenants/"+dbUser.username;
                    // console.log(url);
+                   
                     res.json(url);
                 }
                 else{
@@ -116,4 +117,18 @@ module.exports=function(app){
                     console.log(err)
                 });
         });
+    
+    //route to set order status to complete
+    app.post("/api/orderComplete", function(req,res){
+        console.log(req.body.orderId);
+        let date= Date.now().toString();
+        Orders.findOneAndUpdate({_id:req.body.orderId},{dateCompleted:date})
+            .then(function(dbOrder){
+                res.json(dbOrder);
+            })
+            .catch(function(err){
+                res.json(err);
+            });
+
+    });    
 };

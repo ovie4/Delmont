@@ -53,6 +53,7 @@ $(document).ready(function(){
             .done(function(data){
                 //console.log(data);
                 //log in and send to tenants page
+                window.location.href=data;
             });
     });
 

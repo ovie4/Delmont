@@ -9,6 +9,8 @@ $(document).ready(function(){
         .done(function(data){
             console.log(data);
             $("#username").html(data.firstName);
+            sessionStorage.setItem("username",data.username);
+            sessionStorage.setItem("aptNum", data.aptNum);
             let orders = data.orders;
             for (let i = orders.length-1; i>=0; i--) {
               let dateCreated=orders[i].dateCreated;
@@ -34,9 +36,9 @@ $(document).ready(function(){
     $("#newOrderSubmit").on("click", function(e){
         e.preventDefault();
         //get username and add to order object
-        let user = $("#inputUsername").val().trim()
+        let user = sessionStorage.getItem("username");
         let newOrder={
-            aptNum: $("#inputAptNum").val(),
+            aptNum: sessionStorage.getItem("aptNum"),
             category: $("input[name='categoryRadios']:checked").val(),
             problemDesc: $("#inputProblem").val().trim()
         };
