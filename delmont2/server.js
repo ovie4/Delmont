@@ -7,6 +7,7 @@ var passport = require('passport')
   , LocalStrategy = require('passport-local').Strategy;
 const path=require("path");
 
+
 var PORT=1865;
 
 var db = require("./models");
@@ -32,7 +33,6 @@ mongoose.connect('mongodb://localhost/delmont', {useNewUrlParser: true});
 mongoose.set('useCreateIndex', true);
 
 
-//POST for new users on signup
 
 
 require("./controller/apiRoutes")(app);

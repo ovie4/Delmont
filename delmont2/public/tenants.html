@@ -7,37 +7,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="../css/tenants.css">
-    
+    <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
+    <script type="text/javascript">
+   (function(){
+      emailjs.init("user_qIx7weqzlsQ5IPD09yF9D");
+   })();
+</script>
 </head>
-<body>
-    <!--navbar-->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-        <a class="navbar-brand" href="index.html">21 Delmont</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+<!--navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <a class="navbar-brand" href="index.html">21 Delmont</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <a class="nav-link active" href="tenants.html">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">New Order</a>
+        </li>
         
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link active" href="tenants.html">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">New Order</a>
-            </li>
-            
-            <li class="nav-item">
-                <a class="nav-link" href="#">Check Order Progress</a>
-            </li>
-            </ul>
-            <!--<form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
-            -->
-        </div>
-    </nav>
-
+        <li class="nav-item">
+            <a class="nav-link" href="#">Check Order Progress</a>
+        </li>
+        </ul>
+        <!--<form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        -->
+    </div>
+</nav>
+<body>
+    
+    
     <div class="container d-flex flex-column bd-highlight">
         <div class="row">
             <h3>Welcome Back <span id="username"></span></h3>
@@ -48,12 +54,12 @@
                 <h3>Past Orders</h3>
                 <table id="openOrdersTable" class="table">
                     <thead class="thead-dark">
-                    <tr>
-                        <th>Date Created</td>
-                        <th>Problem</td>
-                        <th>Status</td>
-                    </tr>
-                </thead>
+                        <tr>
+                            <th>Date Created</td>
+                            <th>Problem</td>
+                            <th>Status</td>
+                        </tr>
+                    </thead>
                 </table>
             </div>
             <div class="col-md-5 newOrder">
@@ -112,11 +118,11 @@
         <!--row 3 news-->
         <div class="row">
             <h4>News</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia fugit ratione quia et ad illum incidunt repudiandae reiciendis quidem, odio quos eum nesciunt aliquid sunt maiores recusandae optio consequatur voluptates. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius iure officia maxime laboriosam? Id molestiae facilis aperiam aliquam earum eveniet, nobis quasi necessitatibus reiciendis error repellendus, autem iusto ipsa enim.</p>
+            <section id="notes"></section>
         </div>
 
     </div>
-
+</div>
 
 
 

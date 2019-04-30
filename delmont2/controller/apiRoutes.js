@@ -4,6 +4,7 @@ const Orders= require("../models/Orders");
 const flash = require("connect-flash"); 
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
+const nodemailer= require('nodemailer');
 
 module.exports=function(app){
     app.post("/signup", function(req,res){
@@ -69,19 +70,85 @@ module.exports=function(app){
     //add new order route
     app.post("/api/newOrder/:username", function(req,res){
         console.log(req.body);
-
-        Orders.create(req.body)
-            .then(function(dbOrder){
-                console.log(dbOrder);
-                return User.findOneAndUpdate({username:req.params.username},{$push:{orders:dbOrder._id}},{new:true});
-            })
-            .then(function(dbUser){
-                res.json(dbUser);
-            })
-            .catch(function(err){
-                console.log(err.message);
+        //set up nodemailer transporter and send email
+        var transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: 'gomeneholdings@gmail.com',
+                pass: 'wipeout3097'
+            }
+        });
+        let mailOptions = {
+            from: 'gomeneholdings@gmail.com', // sender address
+            subject: '21 Delmont New Work Order', // Subject line
+          };
+        
+        switch(req.body.category){
+            case 'General':
+                console.log("general case hit");
+                mailOptions['to']='ovie7@yahoo.com';
+                mailOptions['html']='<p>Hello<br />There is a new work order for 21 Delmont Dr. Please see below:<br />Unit #: '+req.body.aptNum+'<br />Category: '+req.body.category+'<br />Problem: '+req.body.problemDesc+'</p>'
+                console.log(mailOptions);
+                transporter.sendMail(mailOptions, function (err, info) {
+                    if(err)
+                      console.log(err)
+                    else
+                      console.log(info);
+                 });
+            
+            case 'Electrical':
+                 mailOptions['to']='ovie7@yahoo.com';
+                 mailOptions['html']='<p>Hello<br />There is a new work order for 21 Delmont Dr. Please see below:<br />Unit #: '+req.body.aptNum+'<br />Category: '+req.body.category+'<br />Problem: '+req.body.problemDesc+'</p>'
+                 transporter.sendMail(mailOptions, function (err, info) {
+                     if(err)
+                       console.log(err)
+                     else
+                       console.log(info);
             });
-    })
+            case 'Plumbing':
+                mailOptions['to']='ovie7@yahoo.com';
+                mailOptions['html']='<p>Hello<br />There is a new work order for 21 Delmont Dr. Please see below:<br />Unit #: '+req.body.aptNum+'<br />Category: '+req.body.category+'<br />Problem: '+req.body.problemDesc+'</p>'
+                console.log(mailOptions);
+                transporter.sendMail(mailOptions, function (err, info) {
+                    if(err)
+                    console.log(err)
+                    else
+                    console.log(info);
+            });
+            case 'Appliance':
+                mailOptions['to']='ovie7@yahoo.com';
+                mailOptions['html']='<p>Hello<br />There is a new work order for 21 Delmont Dr. Please see below:<br />Unit #: '+req.body.aptNum+'<br />Category: '+req.body.category+'<br />Problem: '+req.body.problemDesc+'</p>'
+                console.log(mailOptions);
+                transporter.sendMail(mailOptions, function (err, info) {
+                    if(err)
+                    console.log(err)
+                    else
+                    console.log(info);
+            });
+            case 'HVAC':
+                mailOptions['to']='ovie7@yahoo.com';
+                mailOptions['html']='<p>Hello<br />There is a new work order for 21 Delmont Dr. Please see below:<br />Unit #: '+req.body.aptNum+'<br />Category: '+req.body.category+'<br />Problem: '+req.body.problemDesc+'</p>'
+                console.log(mailOptions);
+                transporter.sendMail(mailOptions, function (err, info) {
+                    if(err)
+                    console.log(err)
+                    else
+                    console.log(info);
+            });
+
+        }
+        // Orders.create(req.body)
+        //     .then(function(dbOrder){
+        //         console.log(dbOrder);
+        //         return User.findOneAndUpdate({username:req.params.username},{$push:{orders:dbOrder._id}},{new:true});
+        //     })
+        //     .then(function(dbUser){
+        //         res.json(dbUser);
+        //     })
+        //     .catch(function(err){
+        //         console.log(err.message);
+        //     });
+     });
 
     //orders for particular username route
         app.get("/api/orders/:username", function(req,res){

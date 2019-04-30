@@ -33,7 +33,7 @@ $(document).ready(function(){
         $("#newOrderForm").toggleClass("d-none");
     });
     //new order submit POST request
-    $("#newOrderSubmit").on("click", function(e){
+    $("#newOrderForm").on("submit", function(e){
         e.preventDefault();
         //get username and add to order object
         let user = sessionStorage.getItem("username");
@@ -51,6 +51,31 @@ $(document).ready(function(){
                 console.log(data);
                 alert("New order Submitted!");
             });
+        console.log("done with first ajax request");
+        //email to requisite vendor and me
+        //var formData = new FormData(this);
+        // newOrder['service_id']= 'gmail';
+        // newOrder['template_id']= 'template_LDociwy8';
+        // newOrder['user_id']= 'user_qIx7weqzlsQ5IPD09yF9D';
+        console.log(newOrder);
+        // console.log("pre-sending");
+        //let template_id= 'template_LDociwy8';
+        //emailjs.send(service_id,template_id,newOrder);
+        // let data = newOrder;
+        // data['template_params']={
+        //     'username':'data.aptNum'
+        // }
+        // $.ajax('https://api.emailjs.com/api/v1.0/email/send', {
+        //     type: 'POST',
+        //     data: JSON.stringify(data),
+        //     contentType: 'application/json' // auto-detection
+        // }).done(function() {
+        //     console.log(neworder);
+        //     alert('Your mail is sent!');
+        // }).fail(function(error) {
+        //     console.log("err");
+        //     alert('Oops... ' + JSON.stringify(error));
+        // });
         
     });
 
