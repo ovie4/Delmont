@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" class="h-100">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,7 +11,7 @@
 </head>
 <!--navbar-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-  <a class="navbar-brand" href="index.html">21 Delmont</a>
+  <a class="navbar-brand" href="index.html">21 Delmont | Buckhead | Atlanta</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -21,24 +21,12 @@
       <li class="nav-item active">
         <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
       </li>
-      <!--<li class="nav-item">
-        <a class="nav-link" href="newOrder.html">New Order</a>
-      </li>
       
-      <li class="nav-item">
-        <a class="nav-link" href="oldOrder.html">Check Order Progress</a>
-      </li>
-    -->
     </ul>
-    <!--
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  -->
+    
   </div>
 </nav>
-<body>
+<body class="d-flex flex-column h-100">
 
   <div class="overlay">
     <div class="container">
@@ -70,7 +58,7 @@
               </div>
             </div>
         </form>
-        
+        <!--signup form-->
         <form class="invisible" id="signUpForm">
             
             <div class="form-row">
@@ -86,7 +74,6 @@
                 <div class="col-sm-6">
                     <select class="form-control" id="inputAptNum">
                         <option>1</option>
-                        <option>2</option>
                         <option>3</option>
                         <option>4</option>
                         <option>5</option>
@@ -105,11 +92,16 @@
                 </div>
             </div>
             <div class="form-row">
-              <div class="form-group col-md-6">
+              <div class="form-group col-md-12">
                 <input type="text" class="form-control" id="signupUsername" placeholder="username">
               </div>
+            </div>
+            <div class="form-row">
               <div class="form-group col-md-6">
                 <input type="password" class="form-control" id="signupPassword" placeholder="password">
+              </div>
+              <div class="form-group col-md-6">
+                <input type="password" class="form-control" id="signupPassword2" placeholder="confirm password">
               </div>
             </div>
             <div class="form-row">
@@ -173,7 +165,12 @@
         </a>
   </div>
 
-  
+  <footer class="footer mt-auto py-3">
+    <div class="container" style="font-size:50%;">
+      <span class="text-muted">Created by: Imagineering Solutions  </span>
+      <a href="#">Contact Us</a>
+    </div>
+  </footer>
   
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>

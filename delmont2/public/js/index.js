@@ -1,7 +1,6 @@
 $(document).ready(function(){
     //show sign in form on clicking current tenant button
     $("#currTenantButton").on("click", function(e){
-        console.log(e);
         e.preventDefault();
         //change class to visible
         $("#signInForm").removeClass("invisible").addClass("visible");
@@ -10,7 +9,6 @@ $(document).ready(function(){
     //on clicking sign up link,hide sign in form show sign up form
     $("#signUpLink").on("click", function(e){
         e.preventDefault();
-        console.log(e);
         $("#signInForm").removeClass("visible").addClass("invisible");
         $("#signUpForm").removeClass("invisible").addClass("visible");
     });
@@ -40,6 +38,9 @@ $(document).ready(function(){
     //on clicking sign up, package info and send POST to /signup
     $("#signupButton").on("click", function(e){
         e.preventDefault();
+        let pass1= $("#signupPassword").val();
+        let pass2= $("#signupPassword2").val();
+        if(pass1===pass2){
         let info={
             firstName:$("#inputfName").val().trim(),
             lastName:$("#inputlName").val().trim(),
@@ -55,6 +56,10 @@ $(document).ready(function(){
                 //log in and send to tenants page
                 window.location.href=data;
             });
+        }
+        else{
+            alert("Please make sure passwords match");
+        }
     });
 
 

@@ -22,9 +22,12 @@ let OrdersSchema= new Schema({
     problemDesc:{
         type:String
     },
-    techNotes:{
-        type: String
-    }
+    techNotes:[
+        {
+        type:Schema.Types.ObjectId,
+        ref: "Notes"
+        }
+    ]
 });
 
 let Orders=mongoose.model("Orders", OrdersSchema);
