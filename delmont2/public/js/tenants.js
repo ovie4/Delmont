@@ -17,11 +17,11 @@ $(document).ready(function(){
               let problemDesc=orders[i].problemDesc;
               if(orders[i].dateCompleted){
                   let orderStatus= "complete";
-                  $("#openOrdersTable").append("<tr><td>"+dateCreated+"</td><td>"+problemDesc+"</td><td>"+orderStatus+"</td></tr>")
+                  $("#openOrdersTable").append("<tbody><tr><td>"+dateCreated+"</td><td>"+problemDesc+"</td><td>"+orderStatus+"</td></tr></tbody>")
               } 
               else{
                   let orderStatus= "pending";
-                  $("#openOrdersTable").append("<tr><td>"+dateCreated+"</td><td>"+problemDesc+"</td><td>"+orderStatus+"</td></tr>")
+                  $("#openOrdersTable").append("<tbody><tr><td>"+dateCreated+"</td><td>"+problemDesc+"</td><td>"+orderStatus+"</td></tr></tbody>")
               }
               
             }

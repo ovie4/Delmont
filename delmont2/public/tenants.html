@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="../css/tenants.css">
    
-</script>
+
 </head>
 <!--navbar-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
@@ -30,28 +30,28 @@
         -->
     </div>
 </nav>
-<body class="d-flex flex-column h-100">
+<body>
     
     
-    <div class="container d-flex flex-column bd-highlight">
-        <div class="row">
+    <div class="container-fluid flex-column">
+        <div class="row mx-auto">
             <h3>Welcome back, <span id="username"></span></h3>
         </div>
         <!--row 2 col7 col5 open orders and new order-->
         <div class="row">
-            <div class="col-md-7 openOrders">
+            <div class="col-sm-7 openOrders">
                 <p style="font-weight:bold">Past Orders</p>
                 <table id="openOrdersTable" class="table table-dark">
                     <thead>
                         <tr>
-                            <th>Date Created</td>
-                            <th>Problem</td>
-                            <th>Status</td>
+                            <th>Date Created</th>
+                            <th>Problem</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                 </table>
             </div>
-            <div class="col-md-5 newOrder">
+            <div class="col-sm-5 newOrder">
                 <button id="newOrderButton">Open New Order</button>
                 <form class="d-none" id="newOrderForm" action="/submitNewOrder">
                     <fieldset class="form-group" id="radioButtonArea">
@@ -111,7 +111,6 @@
         </div>
 
     </div>
-</div>
 
 <footer class="footer mt-auto py-3">
     <div class="container" style="font-size:50%;">

@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="h-100">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Studios At Buckhead</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="./css/index.css">
     
@@ -29,15 +29,15 @@
 <body class="d-flex flex-column h-100">
 
   <div class="overlay">
-    <div class="container">
+    <div class="container-fluid">
       <div class="row">
-        <div class="col-sm-4 mx-auto mainButtons">
-          <a type="button" id="applyButton" class="d-block btn btn-primary mx-auto" href="http://www.glennda.net/ListingDetails/21-Delmont-Drive-NE-Unit-15-Atlanta-GA-30305/6530581/" target="_blank">Apply Today</a>
+        <div class="col-sm-3 mx-auto mainButtons">
+          <a role="button" id="applyButton" class="d-block btn btn-primary mx-auto" href="http://www.glennda.net/ListingDetails/21-Delmont-Drive-NE-Unit-15-Atlanta-GA-30305/6530581/" target="_blank">Apply Today</a>
         </div>
-        <div class="col-sm-4 mx-auto mainButtons">
+        <div class="col-sm-3 mx-auto mainButtons">
             <button id="currTenantButton" class="d-block btn btn-primary mx-auto">Current Tenants</button>
         </div>
-        <div class="col-sm-4 mx-auto">
+        <div class="col-sm-6 mx-auto">
           <!--login form-->
           <form id="signInForm" class="invisible mx-auto" action="/login">
             <div class="form-row">
@@ -62,10 +62,10 @@
         <form class="invisible" id="signUpForm">
             
             <div class="form-row">
-              <div class="form-group col-md-6">
+              <div class="form-group col-sm-6">
                 <input type="text" class="form-control" id="inputfName" placeholder="First Name">
               </div>
-              <div class="form-group col-md-6">
+              <div class="form-group col-sm-6">
                 <input type="text" class="form-control" id="inputlName" placeholder="Surname">
               </div>
             </div>
@@ -97,10 +97,10 @@
               </div>
             </div>
             <div class="form-row">
-              <div class="form-group col-md-6">
+              <div class="form-group col-sm-6">
                 <input type="password" class="form-control" id="signupPassword" placeholder="password">
               </div>
-              <div class="form-group col-md-6">
+              <div class="form-group col-sm-6">
                 <input type="password" class="form-control" id="signupPassword2" placeholder="confirm password">
               </div>
             </div>

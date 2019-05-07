@@ -15,7 +15,7 @@ $(document).ready(function(){
                 } 
                 else{
                     let orderStatus= "pending";
-                    $("#allOrdersTable").append("<tr><td>"+dateCreated+"</td><td>"+category+"</td><td>"+problem+"</td><td>"+aptNum+"</td><td>"+orderStatus+"</td><td><button id='completeButton' data-id="+data[i]._id+" type='button' class='btn btn-danger'>Incomplete</button></td></tr>");
+                    $("#allOrdersTable").append("<tr><td>"+dateCreated+"</td><td>"+category+"</td><td>"+problem+"</td><td>"+aptNum+"</td><td>"+orderStatus+"</td><td><button id='completeButton' data-id="+data[i]._id+" type='button' class='btn btn-danger'>Incomplete</button></td><td><textarea rows='1'id='orderNote'></textarea><button class='btn' role='button' id='orderNoteButton'>&#10004;</button class='btn'></td></tr>");
                 }
                     
             }
