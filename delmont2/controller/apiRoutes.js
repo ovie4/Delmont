@@ -5,6 +5,12 @@ const flash = require("connect-flash");
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const nodemailer= require('nodemailer');
+const Note=require("../models/Note");
+const News=require("../models/News");
+const emailjs=require("emailjs-com");
+const bcrypt=require("bcrypt");
+const saltRounds = 10;
+
 
 module.exports=function(app){
     app.post("/signup", function(req,res){
@@ -12,17 +18,31 @@ module.exports=function(app){
         //let newUser=new User(req.body);
         //res.send(newUser);
         //send to db
-        User.create(req.body)
+        bcrypt.hash(req.body.password,saltRounds, function(err,hash){
+            User.create({
+                firstName:req.body.firstName,
+                lastName:req.body.lastName,
+                aptNum:req.body.aptNum,
+                username:req.body.username,
+                password:hash
+                })
             .then(function(dbUser){
                 console.log("connected");
                 console.log(dbUser);
-                //res.sendFile that user's new tenants page
-                let url="/tenants/"+req.body.username;
-                res.json(url);
+                //send back username and aptNum
+                // let url="/tenants/"+req.body.username;
+                // res.json(url);
+                let creds={
+                    username:dbUser.username,
+                    aptNum:dbUser.aptNum
+                };
+                res.json(creds);
             })
             .catch(function(err){
                 console.log(err.message);
+                res.json("error");
             });
+        })
     });
 
     //login route
@@ -51,16 +71,25 @@ module.exports=function(app){
     app.post('/login', function(req,res){
         User.findOne({username:req.body.username})
             .then(function(dbUser){
-                console.log(req.body);
-                if(dbUser.password===req.body.password){
-                    let url="/tenants/"+dbUser.username;
-                   // console.log(url);
-                   
-                    res.json(url);
+                if(dbUser){
+                    console.log(req.body);
+                    bcrypt.compare(req.body.password, dbUser.password, function (err, result){
+                        if(result==true){
+                            let creds={
+                                username:dbUser.username,
+                                aptNum: dbUser.aptNum
+                            };
+                            res.send(creds);
+                        }
+                        else{
+                            res.send("error");
+                        }
+                    });
                 }
                 else{
-                    console.log("login error");
+                    res.send("username doesn't exist");
                 }
+                
             });
     });
 
@@ -70,73 +99,7 @@ module.exports=function(app){
     //add new order route
     app.post("/api/newOrder/:username", function(req,res){
         console.log(req.body);
-        //set up nodemailer transporter and send email
-        var transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-                user: 'gomeneholdings@gmail.com',
-                pass: 'wipeout3097'
-            }
-        });
-        let mailOptions = {
-            from: 'gomeneholdings@gmail.com', // sender address
-            subject: '21 Delmont New Work Order', // Subject line
-          };
-        
-        switch(req.body.category){
-            case 'General':
-                console.log("general case hit");
-                mailOptions['to']='ovie7@yahoo.com';
-                mailOptions['html']='<p>Hello<br />There is a new work order for 21 Delmont Dr. Please see below:<br />Unit #: '+req.body.aptNum+'<br />Category: '+req.body.category+'<br />Problem: '+req.body.problemDesc+'</p>'
-                console.log(mailOptions);
-                transporter.sendMail(mailOptions, function (err, info) {
-                    if(err)
-                      console.log(err)
-                    else
-                      console.log(info);
-                 });
             
-            case 'Electrical':
-                 mailOptions['to']='ovie7@yahoo.com';
-                 mailOptions['html']='<p>Hello<br />There is a new work order for 21 Delmont Dr. Please see below:<br />Unit #: '+req.body.aptNum+'<br />Category: '+req.body.category+'<br />Problem: '+req.body.problemDesc+'</p>'
-                 transporter.sendMail(mailOptions, function (err, info) {
-                     if(err)
-                       console.log(err)
-                     else
-                       console.log(info);
-            });
-            case 'Plumbing':
-                mailOptions['to']='ovie7@yahoo.com';
-                mailOptions['html']='<p>Hello<br />There is a new work order for 21 Delmont Dr. Please see below:<br />Unit #: '+req.body.aptNum+'<br />Category: '+req.body.category+'<br />Problem: '+req.body.problemDesc+'</p>'
-                console.log(mailOptions);
-                transporter.sendMail(mailOptions, function (err, info) {
-                    if(err)
-                    console.log(err)
-                    else
-                    console.log(info);
-            });
-            case 'Appliance':
-                mailOptions['to']='ovie7@yahoo.com';
-                mailOptions['html']='<p>Hello<br />There is a new work order for 21 Delmont Dr. Please see below:<br />Unit #: '+req.body.aptNum+'<br />Category: '+req.body.category+'<br />Problem: '+req.body.problemDesc+'</p>'
-                console.log(mailOptions);
-                transporter.sendMail(mailOptions, function (err, info) {
-                    if(err)
-                    console.log(err)
-                    else
-                    console.log(info);
-            });
-            case 'HVAC':
-                mailOptions['to']='ovie7@yahoo.com';
-                mailOptions['html']='<p>Hello<br />There is a new work order for 21 Delmont Dr. Please see below:<br />Unit #: '+req.body.aptNum+'<br />Category: '+req.body.category+'<br />Problem: '+req.body.problemDesc+'</p>'
-                console.log(mailOptions);
-                transporter.sendMail(mailOptions, function (err, info) {
-                    if(err)
-                    console.log(err)
-                    else
-                    console.log(info);
-            });
-
-        }
         // Orders.create(req.body)
         //     .then(function(dbOrder){
         //         console.log(dbOrder);
@@ -198,4 +161,55 @@ module.exports=function(app){
             });
 
     });    
+
+    ////route to post new note
+    app.post("/api/newNote", function(req,res){
+        Note.create(req.body)
+            .then(function(dbNote){
+                console.log(dbNote);
+                return Orders.findOneAndUpdate({_id:req.body.identifier},{$push:{techNotes:dbNote._id}},{new:true});
+            })
+            .then(function(dbOrder){
+                res.json(dbOrder);
+            })
+            .catch(function(err){
+                res.json(err)
+            });
+    })
+
+    //route for new News note
+    app.post("/api/newNews", function(req,res){
+        console.log(req.body);
+        News.create(req.body)
+            .then(function(dbNews){
+                console.log(dbNews);
+                if (req.body.aptNum=="All"){
+                    console.log("all hit");
+                    return User.update({},{$push:{news:dbNews._id}}, {multi:true})
+                }
+                else{
+                    console.log("single unit hit");
+                    return User.findOneAndUpdate({aptNum:dbNews._id},{$push:{news:req.body.news}},{new:true});
+                }
+            })
+            .then(function(dbUser){
+                res.json(dbUser);
+            })
+            .catch(function(err){
+                res.json(err)
+            })
+    })
+
+    //route for getting news
+    app.get("/api/news/:user", function(req,res){
+        console.log(req.body);
+        User.findOne({username:req.params.user})
+            .populate("news")
+            .then(function(dbUser){
+                res.json(dbUser)
+            })
+            .catch(function(err){
+                res.json(err)
+            })
+    })
 };

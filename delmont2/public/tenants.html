@@ -7,7 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="../css/tenants.css">
-   
+    <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
+    <script type="text/javascript">
+    (function(){
+      emailjs.init("user_qIx7weqzlsQ5IPD09yF9D");
+    })();
+    </script>
 
 </head>
 <!--navbar-->
@@ -16,11 +21,12 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
+
     
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
+    <div class="collapse navbar-collapse  justify-content-end" id="navbarSupportedContent">
+        <ul class="nav">
         <li class="nav-item">
-            <a class="nav-link active" href="tenants.html">Home <span class="sr-only">(current)</span></a>
+            <button role="button" id="signOutLink">Sign Out</button>
         </li>
         </ul>
         <!--<form class="form-inline my-2 my-lg-0">
@@ -30,7 +36,7 @@
         -->
     </div>
 </nav>
-<body>
+<body class="d-flex flex-column h-100">
     
     
     <div class="container-fluid flex-column">
@@ -106,8 +112,15 @@
         </div>
         <!--row 3 news-->
         <div class="row">
-            <h4>News</h4>
-            <section id="notes"></section>
+            <div class="col-sm-10">
+                <h4>News</h4>
+                <table id="newsTable" class="table table-dark table-striped">
+                    <thead>
+                        <th>Date</th>
+                        <th>Story</th>
+                    </thead>
+                </table>
+            </div>
         </div>
 
     </div>

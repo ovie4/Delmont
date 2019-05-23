@@ -34,6 +34,12 @@ let UserSchema= new Schema({
         type:Schema.Types.ObjectId,
         ref: "Orders"
         }
+    ],
+    news:[
+        {
+        type:Schema.Types.ObjectId,
+        ref: "News"
+        }
     ]
 });
 

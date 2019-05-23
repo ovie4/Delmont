@@ -30,8 +30,17 @@ $(document).ready(function(){
         };
         $.post("/login", creds)
             .done(function(data){
-                // console.log(data);
-                window.location.href=data;
+                console.log(data);
+                if(data==="error"){
+                    alert("Incorrect username/password");
+                }
+                else{
+                    sessionStorage.setItem("username",data.username);
+                    sessionStorage.setItem("aptNum",data.aptNum);
+                    window.location.href="/tenants";
+                    
+                }
+                
             });
     });
 
@@ -52,9 +61,16 @@ $(document).ready(function(){
         console.log(info);
         $.post("/signup", info)
             .done(function(data){
-                //console.log(data);
-                //log in and send to tenants page
-                window.location.href=data;
+                console.log(data);
+                if(data==="error"){
+                    alert("Error creating new account. PLease contact site admin");
+                }
+                else{
+                    sessionStorage.setItem("username",data.username);
+                    sessionStorage.setItem("aptNum",data.aptNum);
+                    //send to tenants page
+                    window.location.href="/tenants";
+                }
             });
         }
         else{

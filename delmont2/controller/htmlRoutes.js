@@ -2,7 +2,8 @@ let path = require("path");
 
 
 module.exports = function(app){
-    app.get("/tenants/:username", function(req,res){
+    app.get("/tenants", function(req,res){
+        //check session storage for right username and password
       // res.json(req.params.username);
        res.sendFile(path.join(__dirname, "../public/tenants.html"));
     });

@@ -25,7 +25,7 @@ let OrdersSchema= new Schema({
     techNotes:[
         {
         type:Schema.Types.ObjectId,
-        ref: "Notes"
+        ref: "Note"
         }
     ]
 });

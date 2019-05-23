@@ -1,14 +1,11 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var logger = require("morgan");
-const flash = require("connect-flash");
 var mongoose = require("mongoose");
-var passport = require('passport')
-  , LocalStrategy = require('passport-local').Strategy;
 const path=require("path");
 
 
-var PORT=1865;
+var PORT=process.env.PORT || 1865;
 
 var db = require("./models");
 
@@ -38,15 +35,6 @@ mongoose.set('useCreateIndex', true);
 require("./controller/apiRoutes")(app);
 require("./controller/htmlRoutes")(app);
 
-//UPDATE user info
-
-//DELETE User
-
-//POST for new order, populate User db, find last order num, increment and save
-
-//GET for order info by order num
-
-//GET for order info by apt num
 
 app.listen(PORT, function() {
     console.log("App running on port " + PORT + "!");

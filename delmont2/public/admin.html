@@ -32,13 +32,13 @@
         </form>
     </div>
 </nav>
-<body>
+<body class ="d-flex flex-column h-100">
     
     <div class="container-fluid">
         <!--table populated by all orders , sorted by date created-->
         <div class="row">
             <h3 class="col-sm-9">All Orders</h3>
-            <button id="submitNote" class="btn btn-primary" data-toggle="modal" data-target="#newNoteModal">Create Note</button>
+            <button id="submitNote" class="btn btn-primary" data-toggle="modal" data-target="#newNoteModal">Create News Note</button>
             <div class="modal" id="newNoteModal" tabindex="-1" role="dialog">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -94,19 +94,44 @@
                 <table class="table table-dark table-hover table-sm table-responsive" id="allOrdersTable">
                     <thead class="thead-dark">
                         <tr>
-                            <th>Date Created</th>
-                            <th>Apt Num</th>
-                            <th>Category</th>
-                            <th>Problem</th>
-                            <th>Status</th>
-                            <th>Mark as Complete</th>
-                            <th>Notes</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Apt</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Problem</th>
+                            <th scope="col">Completed</th>
+                            <th scope="col">Notes</th>
                         </tr>
                     </thead>
                 </table>
             </div>
         </div>
+        <!--new order note modal-->
+        <div class="modal" id="orderNoteModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Order ID:<span class="orderId"></span></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="orderNoteForm">
+                            
+                            <div class="form-group">
+                                <label for="orderNote">Note</label>
+                                <textarea class="form-control" id="inputorderNote" rows="3" placeholder="Note details..."></textarea>
+                            </div>
+                        </form>
 
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" id="orderModalSubmit" class="btn btn-primary" data-dismiss="modal">Submit Note</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <footer class="footer mt-auto py-3">
