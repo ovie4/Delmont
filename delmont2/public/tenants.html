@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Welcome Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/tenants.css">
+    <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
+    <script type="text/javascript">
+    (function(){
+      emailjs.init("user_qIx7weqzlsQ5IPD09yF9D");
+    })();
+    </script>
+
+</head>
+<!--navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <a class="navbar-brand" href="../index.html">21 Delmont | Buckhead | Atlanta</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    
+    <div class="collapse navbar-collapse  justify-content-end" id="navbarSupportedContent">
+        <ul class="nav">
+        <li class="nav-item">
+            <button role="button" id="signOutLink">Sign Out</button>
+        </li>
+        </ul>
+        <!--<form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        -->
+    </div>
+</nav>
+<body class="d-flex flex-column h-100">
+    
+    
+    <div class="container-fluid flex-column">
+        <div class="row mx-auto">
+            <h3>Welcome back, <span id="username"></span></h3>
+        </div>
+        <!--row 2 col7 col5 open orders and new order-->
+        <div class="row">
+            <div class="col-sm-7 openOrders">
+                <p style="font-weight:bold">Past Orders</p>
+                <table id="openOrdersTable" class="table table-dark">
+                    <thead>
+                        <tr>
+                            <th>Date Created</th>
+                            <th>Problem</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="col-sm-5 newOrder">
+                <button id="newOrderButton">Open New Order</button>
+                <form class="d-none" id="newOrderForm" action="/submitNewOrder">
+                    <fieldset class="form-group" id="radioButtonArea">
+                        <div class="row">
+                        <legend class="col-form-label col-sm-4">Category</legend>
+                        <div class="col-sm-8">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="categoryRadios" id="inputAppliance" value="Appliance">
+                                <label class="form-check-label" for="inputAppliance">
+                                    Appliance
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="categoryRadios" id="inputElec" value="Electrical">
+                                <label class="form-check-label" for="inputElec">
+                                    Electrical
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="categoryRadios" id="inputGeneral" value="General">
+                                <label class="form-check-label" for="inputGeneral">
+                                    General Maintenance
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="categoryRadios" id="inputHVAC" value="HVAC">
+                                <label class="form-check-label" for="inputHVAC">
+                                    Heating and Air
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="categoryRadios" id="inputPlumbing" value="Plumbing">
+                                <label class="form-check-label" for="inputPlumbing">
+                                    Plumbing
+                                </label>
+                            </div>
+                        </div>
+                        </div>
+                    </fieldset>
+                    <div class="form-group">
+                        <label for="Problem" id="problemLabel">Problem</label>
+                        <textarea class="form-control" id="inputProblem" rows="3" placeholder="Please describe the issue"></textarea>
+                    </div>
+                    
+                    <div class="form-group row">
+                        <div class="col-sm-10">
+                        <button type="submit" class="btn btn-primary" id="newOrderSubmit">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--row 3 news-->
+        <div class="row">
+            <div class="col-sm-10">
+                <h4>News</h4>
+                <table id="newsTable" class="table table-dark table-striped">
+                    <thead>
+                        <th>Date</th>
+                        <th>Story</th>
+                    </thead>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+<footer class="footer mt-auto py-3">
+    <div class="container" style="font-size:50%;">
+      <span class="text-muted">Created by: Imagineering Solutions  </span>
+      <a href="#">Contact Us</a>
+    </div>
+  </footer>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script src="../js/tenants.js"></script>
+</body>
+</html>

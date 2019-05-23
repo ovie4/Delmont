@@ -1,0 +1,32 @@
+
+
+.carousel-item {
+  height: 100vh;
+  min-height: 350px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.overlay { 
+  color:#fff;
+  position:absolute;
+  z-index:12;
+  top:50%;
+  left:0;
+  width:100%;
+  text-align:center;
+}
+
+#signInForm {
+  position: absolute;
+  top:-20%
+}
+
+#signUpForm{
+  position: relative;
+  top: -20%;
+}
+

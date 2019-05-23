@@ -1,0 +1,23 @@
+body{
+    background-image: url("../assets/Gathering.jpg");
+    background-size: cover;
+    color: #343a40
+}
+
+.table{
+    background: #343a40
+}
+
+#radioButtonArea{
+    background: #343a40;
+    color: white
+}
+
+#problemLabel{
+    background: #343a40;
+    color: white
+}
+
+#signOutLink{
+    right:1%
+}

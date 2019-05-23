@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en" class="h-100">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Studios At Buckhead</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="./css/index.css">
+    
+</head>
+<!--navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+  <a class="navbar-brand" href="index.html">21 Delmont | Buckhead | Atlanta</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!--<div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+      </li>
+      
+    </ul>
+    
+  </div>
+-->
+</nav>
+<body class="d-flex flex-column h-100">
+
+  <div class="overlay">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 mx-auto mainButtons">
+          <a role="button" id="applyButton" class="d-block btn btn-primary mx-auto" href="http://www.glennda.net/ListingDetails/21-Delmont-Drive-NE-Unit-15-Atlanta-GA-30305/6530581/" target="_blank">Apply Today</a>
+        </div>
+        <div class="col-sm-3 mx-auto mainButtons">
+            <button id="currTenantButton" class="d-block btn btn-primary mx-auto">Current Tenants</button>
+        </div>
+        <div class="col-sm-6 mx-auto">
+          <!--login form-->
+          <form id="signInForm" class="invisible mx-auto" action="/login">
+            <div class="form-row">
+                <div class="col">
+                    <input type="text" class="form-control" id="inputUsername" placeholder="username">
+                </div>
+                <div class="col">
+                    <input type="password" class="form-control" id="inputPassword" placeholder="password">
+                </div>
+                
+            </div>
+            <div class="form-row">
+              <div class="col">
+                  <button type="submit" class="btn btn-primary" id="loginButton">Log In</button>
+              </div>
+              <div class="col">
+                  <a href="#" id="signUpLink">Sign Up</a>
+              </div>
+            </div>
+        </form>
+        <!--signup form-->
+        <form class="invisible" id="signUpForm">
+            
+            <div class="form-row">
+              <div class="form-group col-sm-6">
+                <input type="text" class="form-control" id="inputfName" placeholder="First Name">
+              </div>
+              <div class="form-group col-sm-6">
+                <input type="text" class="form-control" id="inputlName" placeholder="Surname">
+              </div>
+            </div>
+            <div class="form-group row">
+                <label for="aptNum" class="col-sm-6 col-form-label">Apt #</label>
+                <div class="col-sm-6">
+                    <select class="form-control" id="inputAptNum">
+                        <option>1</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                        <option>11</option>
+                        <option>12</option>
+                        <option>13</option>
+                        <option>14</option>
+                        <option>15</option>
+                        <option>16</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-12">
+                <input type="text" class="form-control" id="signupUsername" placeholder="username">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-sm-6">
+                <input type="password" class="form-control" id="signupPassword" placeholder="password">
+              </div>
+              <div class="form-group col-sm-6">
+                <input type="password" class="form-control" id="signupPassword2" placeholder="confirm password">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col">
+                <button type="submit" class="btn btn-primary" id="signupButton">Sign Up</button>
+              </div>
+              <div class="col">
+                <a href="#" id="loginLink">Log In</a>
+              </div>
+            </div>
+        </form>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+      <!-- Slide One - Set the background image for this slide in the line below -->
+      <div class="carousel-item active" style="background-image: url('./assets/Gathering.jpg')">
+        <div class="carousel-caption d-none d-md-block">
+          <h2 class="display-4"></h2>
+          <p class="lead"></p>
+        </div>
+      </div>
+      <!-- Slide Two - Set the background image for this slide in the line below -->
+      <div class="carousel-item" style="background-image: url('./assets/Gathering2.jpg')">
+        <div class="carousel-caption d-none d-md-block">
+          <h2 class="display-4"></h2>
+          <p class="lead"></p>
+        </div>
+      </div>
+      <!-- Slide Three - Set the background image for this slide in the line below -->
+      <div class="carousel-item" style="background-image: url('./assets/Gathering3.jpg')">
+        <div class="carousel-caption d-none d-md-block">
+          <h2 class="display-4"></h2>
+          <p class="lead"></p>
+        </div>
+      </div>
+      <div class="carousel-item" style="background-image: url('./assets/Bathroom.jpg')">
+        <div class="carousel-caption d-none d-md-block">
+          <h2 class="display-4"></h2>
+          <p class="lead"></p>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+  </div>
+
+  <footer class="footer mt-auto py-3">
+    <div class="container" style="font-size:50%;">
+      <span class="text-muted">Created by: Imagineering Solutions  </span>
+      <a href="#">Contact Us</a>
+    </div>
+  </footer>
+  
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script src="./js/index.js"></script>
+</body>
+</html>
