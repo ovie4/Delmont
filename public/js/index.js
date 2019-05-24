@@ -31,7 +31,7 @@ $(document).ready(function(){
         $.post("/login", creds)
             .done(function(data){
                 console.log(data);
-                if(data==="error"){
+                if(data==="error"||data=="username doesn't exist"){
                     alert("Incorrect username/password");
                 }
                 else{
