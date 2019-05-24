@@ -2,8 +2,9 @@ $(document).ready(function(){
     //create Open Order table
     
     let username=sessionStorage.getItem("username");
+    console.log(username);
     
-    if(username){
+    if(username!=null||username!=undefined){
         let url = "/api/orders/"+username;
         $.get(url)
             .done(function(data){
@@ -109,10 +110,7 @@ $(document).ready(function(){
     }
     else{
         alert("Please Login")
-        $.get("/home")
-            .done(function(data){
-                console.log("invalid login");
-            });
+        window.location.href="../index";
     }
 
 

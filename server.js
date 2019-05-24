@@ -26,7 +26,7 @@ app.use(express.static('public'));
 
 //set up mongoose
 mongoose.Promise = Promise;
-mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true});
+mongoose.connect(process.env.MONGODB_URI||'mongodb://localhost/delmont', {useNewUrlParser: true});
 mongoose.set('useCreateIndex', true);
 
 
